@@ -35,7 +35,7 @@ public class RunController {
 
         Optional<Run> run = runRepository.findById(id);
         if (run.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+            throw new RunNotFoundException();
         }
 
         return run.get();
@@ -52,7 +52,8 @@ public class RunController {
     Run replaceRun(@RequestBody Run newRun, @PathVariable Integer id) {
         Optional<Run> run = runRepository.update(newRun, id);
         if (run.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+            throw new RunNotFoundException();
+
         }
         return run.get();
     }
@@ -61,7 +62,7 @@ public class RunController {
     void deleteRun(@PathVariable Integer id) {
         var run = runRepository.deleteRunById(id);
         if (run.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+            throw new RunNotFoundException();
         }
     }
 

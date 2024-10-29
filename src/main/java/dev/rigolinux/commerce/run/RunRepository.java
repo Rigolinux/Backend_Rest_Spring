@@ -2,12 +2,11 @@ package dev.rigolinux.commerce.run;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
+import java.util.Optional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Repository
 public class RunRepository {
@@ -24,7 +23,7 @@ public class RunRepository {
     }
 
     Optional<Run> findById(Integer id) {
-        return runs.stream().filter(run -> run.id() == id).findFirst();
+        return runs.stream().filter(r -> r.id() == id).findFirst();
     }
 
     Run save(Run run) {
