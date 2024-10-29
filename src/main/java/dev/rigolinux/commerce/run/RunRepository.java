@@ -33,7 +33,7 @@ public class RunRepository {
     }
 
 
-    Optional<Run> delete(int id) {
+    Optional<Run> deleteRunById(int id) {
 
         Optional<Run> runToDeleteOptional = runs.stream()
                 .filter(r -> r.id() == id)

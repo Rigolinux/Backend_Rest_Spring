@@ -59,7 +59,10 @@ public class RunController {
 
     @DeleteMapping("/{id}")
     void deleteRun(@PathVariable Integer id) {
-        runRepository.delete(id);
+        var run = runRepository.deleteRunById(id);
+        if (run.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+        }
     }
 
 }
