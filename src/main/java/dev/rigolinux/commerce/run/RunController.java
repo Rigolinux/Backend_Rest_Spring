@@ -1,6 +1,7 @@
 package dev.rigolinux.commerce.run;
 
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -43,7 +44,7 @@ public class RunController {
 
     //Post new run with all fields from body and method post
     @PostMapping()
-    Run newRun(@RequestBody Run newRun) {
+    Run newRun(@Valid @RequestBody Run newRun) {
         return runRepository.save(newRun);
     }
 
