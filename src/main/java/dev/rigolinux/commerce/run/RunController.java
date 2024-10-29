@@ -50,7 +50,7 @@ public class RunController {
 
 
     @PutMapping("/{id}")
-    Run replaceRun(@RequestBody Run newRun, @PathVariable Integer id) {
+    Run replaceRun(@Valid @RequestBody Run newRun, @PathVariable Integer id) {
         Optional<Run> run = runRepository.update(newRun, id);
         if (run.isEmpty()) {
             throw new RunNotFoundException();
